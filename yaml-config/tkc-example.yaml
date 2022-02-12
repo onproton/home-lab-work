@@ -1,1 +1,21 @@
-PLACEHOLDER
+apiVersion: run.tanzu.vmware.com/v1alpha1
+kind: TanzuKubernetesCluster
+metadata:
+  name: tkc-sky
+  namespace: ns-sky
+spec:
+  distribution:
+    version: v1.21
+  topology:
+    controlPlane:
+      class: best-effort-xsmall
+      count: 3
+      storageClass: kubernetes-demo-storage-policy
+    workers:
+      class: best-effort-xsmall
+      count: 3
+      storageClass: kubernetes-demo-storage-policy
+  settings:
+    storage:
+      classes: ["kubernetes-demo-storage-policy"]              #Named PVC storage classes
+      defaultClass: kubernetes-demo-storage-policy                     #Default PVC storage class
