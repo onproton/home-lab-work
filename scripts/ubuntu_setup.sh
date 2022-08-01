@@ -9,15 +9,20 @@
 #! /bin/bash
 # cd ~ && touch ubuntu_setup.sh && chmod u+x ubuntu_setup.sh && curl https://raw.githubusercontent.com/onproton/home-lab-work/main/scripts/ubuntu_setup.sh > ubuntu_setup.sh
 
+# Set variables if needed
+user_id=''
+
 # Install utility packages
 sudo apt install -y vim htop curl wget nmap tcptraceroute traceroute bash-completion git open-vm-tools net-tools zsh neofetch openssh-server
 
+# Change shell to zsh once installed
+sudo chsh -s $(which zsh) $user_id
+
 # Set up Oh My ZSH
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Copy .zshrc configuration file data
-curl https://raw.githubusercontent.com/onproton/home-lab-work/main/scripts/resources/.zshrc_ubuntu > ~/.zshrc
-
+curl https://raw.githubusercontent.com/onproton/home-lab-work/main/scripts/resources/.zshrc_ubuntu > /home/$user_id/.zshrc
 
 # Install K8s packages and extensions - ref:
 # https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management
