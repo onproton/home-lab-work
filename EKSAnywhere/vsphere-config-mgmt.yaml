@@ -1,0 +1,81 @@
+apiVersion: anywhere.eks.amazonaws.com/v1alpha1
+kind: Cluster
+metadata:
+   name: mgmt
+spec:
+   clusterNetwork:
+      cniConfig:
+         cilium: {}
+      pods:
+         cidrBlocks:
+            - 192.168.0.0/16
+      services:
+         cidrBlocks:
+            - 10.96.0.0/12
+   controlPlaneConfiguration:
+      count: 1
+      endpoint:
+         host: ""
+      machineGroupRef:
+        kind: VSphereMachineConfig
+        name: my-cluster-machines
+      taints:
+      - key: ""
+        value: ""
+        effect: ""
+      labels:
+        "<key1>": ""
+        "<key2>": "" 
+   datacenterRef:
+      kind: VSphereDatacenterConfig
+      name: my-cluster-datacenter
+   externalEtcdConfiguration:
+     count: 3
+     machineGroupRef:
+        kind: VSphereMachineConfig
+        name: my-cluster-machines
+   kubernetesVersion: "1.22"
+   workerNodeGroupConfigurations:
+   - count: 1
+     machineGroupRef:
+       kind: VSphereMachineConfig
+       name: my-cluster-machines
+     name: md-0
+     taints:
+     - key: ""
+       value: ""
+       effect: ""
+     labels:
+       "<key1>": ""
+       "<key2>": "" 
+---
+apiVersion: anywhere.eks.amazonaws.com/v1alpha1
+kind: VSphereDatacenterConfig
+metadata:
+   name: my-cluster-datacenter
+spec:
+  datacenter: ""
+  server: ""
+  network: ""
+  insecure:
+  thumbprint: ""
+
+---
+apiVersion: anywhere.eks.amazonaws.com/v1alpha1
+kind: VSphereMachineConfig
+metadata:
+   name: my-cluster-machines
+spec:
+  diskGiB:
+  datastore: ""
+  folder: ""
+  numCPUs:
+  memoryMiB:
+  osFamily: ""
+  resourcePool: ""
+  storagePolicyName: ""
+  template: ""
+  users:
+  - name: ""
+    sshAuthorizedKeys:
+    - ""
