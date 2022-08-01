@@ -7,7 +7,7 @@
 #########################################################
 
 ## Set variables for intended user
-export user_id='havok2'
+export user_id=''
 
 
 ## Add public key to autorized keys and ensure permissions are correct
