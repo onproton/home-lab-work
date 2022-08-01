@@ -3,11 +3,13 @@
 # keys for login and permissions to sudo                #
 # This script sdhould be run as root                    #
 #########################################################
-# Version 1.0 | Eliza Danyi | 8.11.2022                 #
+# Version 1.0 | Eliza Danyi | 8.1.2022                 #
 #########################################################
 
+#!/bin/bash
+
 ## Set variables for intended user
-export user_id=''
+user_id=''
 
 
 ## Add public key to autorized keys and ensure permissions are correct
@@ -21,4 +23,6 @@ echo ''$user_id' ALL=(ALL) NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bck
 ### Turn off password authentication, root login
 sudo curl https://raw.githubusercontent.com/onproton/home-lab-work/main/scripts/resources/sshd_config_default > /etc/ssh/sshd_config
+## Restart sshd for configuration to take effect
+systemctl restart sshd
 
