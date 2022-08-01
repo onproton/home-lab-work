@@ -12,7 +12,7 @@
 sudo apt install -y vim htop curl wget nmap tcptraceroute traceroute bash-completion git open-vm-tools net-tools zsh neofetch openssh-server
 
 # Set up Oh My ZSH
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" <<< 'y'
 
 # Copy .zshrc configuration file data
 curl https://raw.githubusercontent.com/onproton/home-lab-work/main/scripts/resources/.zshrc_ubuntu > ~/.zshrc
