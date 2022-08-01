@@ -7,12 +7,13 @@
 # Version 1.0 | Eliza Danyi | 8.11.2022                 #
 #########################################################
 #! /bin/bash
+# cd ~ && touch ubuntu_setup.sh && chmod u+x ubuntu_setup.sh && curl https://raw.githubusercontent.com/onproton/home-lab-work/main/scripts/ubuntu_setup.sh > ubuntu_setup.sh
 
 # Install utility packages
 sudo apt install -y vim htop curl wget nmap tcptraceroute traceroute bash-completion git open-vm-tools net-tools zsh neofetch openssh-server
 
 # Set up Oh My ZSH
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" <<< 'y'
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Copy .zshrc configuration file data
 curl https://raw.githubusercontent.com/onproton/home-lab-work/main/scripts/resources/.zshrc_ubuntu > ~/.zshrc
