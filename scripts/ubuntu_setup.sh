@@ -36,3 +36,5 @@ echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https:/
 ## Update apt package index with the new repository and install kubectl
 sudo apt-get update
 sudo apt-get install -y kubectl
+
+exit 0
