@@ -26,3 +26,4 @@ sudo curl https://raw.githubusercontent.com/onproton/home-lab-work/main/scripts/
 ## Restart sshd for configuration to take effect
 systemctl restart sshd
 
+exit 0
